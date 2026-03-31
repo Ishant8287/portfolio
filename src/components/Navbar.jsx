@@ -1,111 +1,96 @@
-import scrollTo from "../utils/scrollTo";
+import { useState } from "react";
+import { useTheme } from "../hooks/useTheme";
 
-const NAV_ITEMS = ["about", "projects", "skills", "contact"];
+export default function Navbar() {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
-function Navbar({ activeSection, menuOpen, setMenuOpen, dark, toggleTheme }) {
+  const closeMenu = () => setIsMobileOpen(false);
+
   return (
     <>
-      {/* DESKTOP NAV */}
-      <nav className="nav">
-        <span className="nav-logo" onClick={() => scrollTo("hero")}>
+      <nav>
+        <a className="nav-logo" href="#hero">
           IS.
-        </span>
+        </a>
         <ul className="nav-links">
-          {NAV_ITEMS.map((item) => (
-            <li key={item}>
-              <a
-                className={activeSection === item ? "active" : ""}
-                onClick={() => scrollTo(item)}
-              >
-                {item}
-              </a>
-            </li>
-          ))}
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
-        <div className="nav-right">
+
+        <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+          <div className="nav-status">
+            <span className="status-dot"></span>
+            Open to Internships
+          </div>
+
+          {/* Theme Toggle Button */}
           <button
-            className="theme-toggle"
             onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title={dark ? "Switch to light mode" : "Switch to dark mode"}
+            className="theme-toggle"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
-            {dark ? (
-              /* Sun icon */
+            {theme === "dark" ? (
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeWidth="2"
               >
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             ) : (
-              /* Moon icon */
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeWidth="2"
               >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             )}
           </button>
-          <button
-            className="hamburger"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
         </div>
+
+        <button
+          className="hamburger"
+          onClick={() => setIsMobileOpen(true)}
+          aria-label="Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
 
-      {/* MOBILE MENU */}
-      <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
-        <button
-          style={{
-            position: "absolute",
-            top: 20,
-            right: "5vw",
-            background: "none",
-            border: "none",
-            fontSize: 24,
-            cursor: "pointer",
-            color: "var(--color-text)",
-          }}
-          onClick={() => setMenuOpen(false)}
-        >
+      {/* Mobile Menu logic remains exactly the same */}
+      <div className={`mobile-menu ${isMobileOpen ? "open" : ""}`}>
+        <button className="mobile-close" onClick={closeMenu}>
           ✕
         </button>
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item}
-            onClick={() => {
-              scrollTo(item);
-              setMenuOpen(false);
-            }}
-          >
-            {item}
-          </a>
-        ))}
+        <a href="#about" className="mobile-nav-link" onClick={closeMenu}>
+          About
+        </a>
+        <a href="#projects" className="mobile-nav-link" onClick={closeMenu}>
+          Projects
+        </a>
+        <a href="#skills" className="mobile-nav-link" onClick={closeMenu}>
+          Skills
+        </a>
+        <a href="#contact" className="mobile-nav-link" onClick={closeMenu}>
+          Contact
+        </a>
       </div>
     </>
   );
 }
-
-export default Navbar;

@@ -1,14 +1,14 @@
-import scrollTo from "../utils/scrollTo";
+export default function Footer() {
+  const scrollToTop = () => {
+    document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+  };
 
-function Footer() {
   return (
-    <footer className="footer">
-      <p className="footer-text">© 2026 Ishant Singh</p>
-      <button className="footer-scroll-top" onClick={() => scrollTo("hero")}>
+    <footer>
+      <p className="footer-copy">© 2026 Ishant Singh</p>
+      <button className="footer-top" onClick={scrollToTop}>
         Back to top ↑
       </button>
     </footer>
   );
 }
-
-export default Footer;

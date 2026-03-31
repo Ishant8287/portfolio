@@ -1,67 +1,65 @@
-import FadeIn from "./FadeIn";
+import Reveal from "./Reveal";
 
-function Contact({ links }) {
+export default function Contact() {
   return (
     <section id="contact">
       <div className="container">
-        <FadeIn>
+        <Reveal>
           <div className="section-header">
             <span className="section-num">04</span>
             <h2 className="section-title">Contact</h2>
-            <div className="section-line" />
+            <div className="section-line"></div>
           </div>
-        </FadeIn>
-        <FadeIn delay={100}>
-          <div className="contact-inner">
-            <div>
-              <h3 className="contact-heading">
-                Let's build scalable backend
-                <br />
-                systems.
-              </h3>
-              <p className="contact-sub">
-                I'm actively looking for backend engineering internships. If
-                you're hiring or just want to talk tech, reach out.
-              </p>
-            </div>
-            <div className="contact-links">
-              <a className="contact-link-item" href={`mailto:${links.email}`}>
-                <div>
-                  <p className="contact-link-label">Email</p>
-                  <p className="contact-link-value">{links.email}</p>
-                </div>
-                <span className="contact-arrow">→</span>
-              </a>
-              <a
-                className="contact-link-item"
-                href={links.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div>
-                  <p className="contact-link-label">GitHub</p>
-                  <p className="contact-link-value">@Ishant8287</p>
-                </div>
-                <span className="contact-arrow">→</span>
-              </a>
-              <a
-                className="contact-link-item"
-                href={links.linkedin}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div>
-                  <p className="contact-link-label">LinkedIn</p>
-                  <p className="contact-link-value">Ishant Singh</p>
-                </div>
-                <span className="contact-arrow">→</span>
-              </a>
-            </div>
+        </Reveal>
+        <Reveal className="contact-layout">
+          <div>
+            <h3 className="contact-heading">
+              Let's build
+              <br />
+              scalable
+              <br />
+              <em>systems.</em>
+            </h3>
+            <p className="contact-sub">
+              Actively looking for backend engineering internships. If you're
+              hiring or just want to talk tech, my inbox is open.
+            </p>
           </div>
-        </FadeIn>
+          <div className="contact-links">
+            <a className="contact-item" href="mailto:singhishant683@gmail.com">
+              <div className="contact-item-left">
+                <p className="contact-item-key">Email</p>
+                <p className="contact-item-val">singhishant683@gmail.com</p>
+              </div>
+              <span className="contact-arrow">↗</span>
+            </a>
+            <a
+              className="contact-item"
+              href="https://github.com/Ishant8287"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="contact-item-left">
+                <p className="contact-item-key">GitHub</p>
+                <p className="contact-item-val">@Ishant8287</p>
+              </div>
+              <span className="contact-arrow">↗</span>
+            </a>
+            <a
+              className="contact-item"
+              href="https://www.linkedin.com/in/ishant-singh-9b3bb93a7"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="contact-item-left">
+                <p className="contact-item-key">LinkedIn</p>
+                <p className="contact-item-val">Ishant Singh</p>
+              </div>
+              <span className="contact-arrow">↗</span>
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
 }
-
-export default Contact;
