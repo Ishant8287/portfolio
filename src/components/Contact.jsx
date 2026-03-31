@@ -15,7 +15,7 @@ function Contact({ links }) {
           <div className="contact-inner">
             <div>
               <h3 className="contact-heading">
-                Let's build
+                Let's build scalable backend systems.
                 <br />
                 something.
               </h3>

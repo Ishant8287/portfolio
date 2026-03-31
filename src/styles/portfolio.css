@@ -510,9 +510,9 @@ section {
   font-family: 'Syne', sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   color: var(--color-text);
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 1.2rem;
 }
 

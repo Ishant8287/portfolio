@@ -1,9 +1,9 @@
 const data = {
   name: "Ishant Singh",
   tagline:
-    "Node.js Backend Developer focused on clean architecture and secure API design.",
+    "Node.js Backend building scalable REST APIS with secure authentication system",
   about:
-    "I'm a backend-focused developer building real-world projects with Node.js, Express, and MongoDB. I care about clean code structure, secure authentication systems, and scalable API design. Currently solving DSA problems daily and preparing for software engineering internships.",
+    "I'm a backend-focused developer building real-world projects with Node.js, Express, and MongoDB. I care about clean code structure, secure authentication systems, and scalable API design. Currently solving DSA problems daily and building backend systems for real world applications",
   skills: {
     Languages: ["Java", "JavaScript"],
     Backend: ["Node.js", "Express.js"],
@@ -25,7 +25,7 @@ const data = {
       id: 2,
       name: "Blog API",
       description:
-        "A production-ready REST API featuring CRUD operations, resource relationships, filtering, pagination, and clean modular architecture. A showcase of backend fundamentals done right.",
+        "A production-ready REST API featuring CRUD operations, resource relationships, filtering, JWT authentication,RBAC, pagination and scalable backend architecture. A showcase of backend fundamentals done right.",
       tech: ["Node.js", "Express.js", "MongoDB", "Mongoose"],
       github: "https://github.com/Ishant8287/Blog-api-backend",
       live: null,
