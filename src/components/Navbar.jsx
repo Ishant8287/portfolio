@@ -13,6 +13,7 @@ export default function Navbar() {
         <a className="nav-logo" href="#hero">
           IS.
         </a>
+
         <ul className="nav-links">
           <li>
             <a href="#about">About</a>
@@ -28,13 +29,13 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+        {/* RIGHT SIDE ACTIONS*/}
+        <div className="nav-actions">
           <div className="nav-status">
             <span className="status-dot"></span>
             Open to Internships
           </div>
 
-          {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
             className="theme-toggle"
@@ -60,20 +61,21 @@ export default function Navbar() {
               </svg>
             )}
           </button>
-        </div>
 
-        <button
-          className="hamburger"
-          onClick={() => setIsMobileOpen(true)}
-          aria-label="Menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          {/* Hamburger*/}
+          <button
+            className="hamburger"
+            onClick={() => setIsMobileOpen(true)}
+            aria-label="Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile Menu logic remains exactly the same */}
+      {/* Mobile Menu*/}
       <div className={`mobile-menu ${isMobileOpen ? "open" : ""}`}>
         <button className="mobile-close" onClick={closeMenu}>
           ✕

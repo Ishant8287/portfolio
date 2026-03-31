@@ -26,7 +26,13 @@ export default function Contact() {
             </p>
           </div>
           <div className="contact-links">
-            <a className="contact-item" href="mailto:singhishant683@gmail.com">
+            {/* GMAIL DIRECT LINK */}
+            <a
+              className="contact-item"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=singhishant683@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               <div className="contact-item-left">
                 <p className="contact-item-key">Email</p>
                 <p className="contact-item-val">singhishant683@gmail.com</p>
