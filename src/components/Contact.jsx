@@ -15,9 +15,9 @@ function Contact({ links }) {
           <div className="contact-inner">
             <div>
               <h3 className="contact-heading">
-                Let's build scalable backend systems.
+                Let's build scalable backend
                 <br />
-                something.
+                systems.
               </h3>
               <p className="contact-sub">
                 I'm actively looking for backend engineering internships. If
