@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import Cursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -11,18 +9,11 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Reveal from "./components/Reveal";
 
+import { usePortfolio } from "./hooks/usePortfolio";
+
 function App() {
-  const [loading, setLoading] = useState(true);
+  const { data, loading, error } = usePortfolio();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // adjust time if needed
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // 🔥 Block UI until loading finishes
   if (loading) return <Loader />;
 
   return (
@@ -30,11 +21,11 @@ function App() {
       <Cursor />
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        <Hero name={data.name} role={data.role} />
+        <About about={data.about} />
+        <Projects projects={data.projects} />
+        <Skills skills={data.skills} />
+        <Contact email={data.email} />
         <Reveal />
       </main>
       <Footer />
