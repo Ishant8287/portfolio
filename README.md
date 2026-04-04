@@ -5,7 +5,7 @@ A high-performance developer portfolio focused on **backend engineering**, showc
 ---
 
 ## 🔗 Live Demo
-👉 https://your-portfolio-link.vercel.app
+👉 https://vercel.com/ishant-singhs-projects-dd9c36b5/portfolio
 
 ---
 
@@ -98,9 +98,3 @@ Lightweight workout tracking app:
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone repo
-```bash
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
