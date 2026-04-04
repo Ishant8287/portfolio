@@ -1,4 +1,3 @@
-export { Cursor } from "../Cursor.jsx";
 import useCursor from "./hooks/useCursor";
 
 export default function Cursor() {
