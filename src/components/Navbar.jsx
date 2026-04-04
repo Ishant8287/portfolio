@@ -1,40 +1,86 @@
-import { useEffect, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
+import { useState, useEffect } from "react";
+import useTheme from "./hooks/useTheme";
 
 export default function Navbar() {
+  const { dark, toggle } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <nav
-      className={`fixed w-full z-50 transition-all ${
-        scrolled
-          ? "bg-black/40 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-        <h1 className="font-bold text-lg">Ishant</h1>
+  const closeMenu = () => setMobileOpen(false);
 
-        <div className="flex gap-6 items-center">
-          {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`}>
-              {item}
+  const navLinks = [
+    { href: "#about", label: "about" },
+    { href: "#skills", label: "skills" },
+    { href: "#projects", label: "projects" },
+    { href: "#philosophy", label: "philosophy" },
+    { href: "#cs2", label: "contact" },
+  ];
+
+  return (
+    <>
+      <nav id="nav" className={scrolled ? "sc" : ""}>
+        <a href="#" className="nl">
+          IS<em>.</em>
+        </a>
+
+        <div className="nls">
+          {navLinks.map(({ href, label }) => (
+            <a key={label} href={href}>
+              {label}
             </a>
           ))}
-          <ThemeToggle />
         </div>
+
+        <div className="na">
+          <button className="btn-th" onClick={toggle} aria-label="Toggle theme">
+            {dark ? "🌙" : "☀️"}
+          </button>
+          <a href="#" className="btn-re" download>
+            resume ↓
+          </a>
+          <button
+            className="nmb"
+            style={{ display: "none" }}
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile overlay */}
+      <div id="mno" className={mobileOpen ? "open" : ""} onClick={closeMenu} />
+
+      {/* Mobile nav drawer */}
+      <div id="mn" className={mobileOpen ? "open" : ""}>
+        {navLinks.map(({ href, label }) => (
+          <a key={label} href={href} className="ml" onClick={closeMenu}>
+            {label}
+          </a>
+        ))}
+        <a
+          href="#"
+          onClick={closeMenu}
+          style={{
+            marginTop: "auto",
+            border: "1px solid var(--accent)",
+            borderRadius: "6px",
+            padding: ".62rem 1rem",
+            textAlign: "center",
+            color: "var(--accent)",
+            letterSpacing: ".06em",
+          }}
+        >
+          resume ↓
+        </a>
       </div>
-    </nav>
+    </>
   );
 }
