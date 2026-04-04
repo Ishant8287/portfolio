@@ -1,21 +1,106 @@
-# Ishant Singh Portfolio
+# Ishant Singh — Backend Engineer Portfolio
 
-Interactive portfolio site for a backend-focused engineer, built with React, TypeScript, Vite, GSAP, and Tailwind CSS.
+A high-performance developer portfolio focused on **backend engineering**, showcasing real-world projects, system design thinking, and clean architecture principles.
 
-## Run locally
+---
 
-Prerequisite: Node.js 20+
+## 🔗 Live Demo
+👉 https://your-portfolio-link.vercel.app
 
-1. Install dependencies with `npm install`
-2. Start the dev server with `npm run dev`
+---
 
-## Checks
+## ⚡ Overview
 
-- Type-check with `npm run lint`
-- Create a production build with `npm run build`
-- Remove the build output with `npm run clean`
+This portfolio highlights my work as a **backend-focused developer**, with emphasis on:
 
-## Notes
+- Scalable API design
+- Authentication & authorization (JWT + RBAC)
+- Clean architecture (routes → controllers → services → models)
+- Performance & maintainability
 
-- The current portfolio build does not require any environment variables.
-- The contact form opens the user's email client via `mailto:` by default.
+---
+
+## 🧠 Key Features
+
+- ⚡ Smooth UI with **GSAP animations**
+- 🎯 Custom animated **3D canvas hero section**
+- 🧩 Modular project cards with case studies
+- 🔐 Backend-focused philosophy section
+- 🌙 Dark / Light theme toggle
+- 🖱 Custom cursor interaction
+- 📱 Fully responsive design
+- 🎮 Easter egg (yes, there’s a hidden game 👀)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React (Vite)
+- JavaScript (ES6+)
+- CSS (Custom, no frameworks)
+
+### Animations
+- GSAP
+- ScrollTrigger
+
+### Backend Concepts (Showcased)
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+- RBAC (Role-Based Access Control)
+
+---
+
+---
+
+## 🧪 Featured Projects
+
+### 🛒 RetailFlow
+Full-stack retail management system with:
+- POS system
+- Real-time inventory tracking
+- Analytics dashboard
+
+**Tech:** React, Node.js, Express, MongoDB
+
+---
+
+### 📝 Blog API
+Production-grade REST API featuring:
+- JWT Authentication
+- RBAC
+- Pagination
+- Clean layered architecture
+
+**Tech:** Node.js, Express, MongoDB
+
+---
+
+### 💪 GymTracker
+Lightweight workout tracking app:
+- Fast UI
+- LocalStorage persistence
+- Mobile-first design
+
+**Tech:** React, JavaScript
+
+---
+
+## 🏗 Architecture Philosophy
+
+- Separation of concerns (MVC-inspired)
+- Middleware-driven authorization
+- Centralized error handling
+- Input validation at every layer
+- Scalable folder structure
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone repo
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
