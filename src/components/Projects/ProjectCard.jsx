@@ -1,5 +1,6 @@
 export default function ProjectCard({ project, onCaseStudy }) {
   const { icon, title, description, tech, github, live } = project;
+  const stopCardClick = (event) => event.stopPropagation();
 
   return (
     <div className="pc rev">
@@ -7,12 +8,26 @@ export default function ProjectCard({ project, onCaseStudy }) {
         <div className="pib">{icon}</div>
         <div className="pls">
           {github && (
-            <a href={github} target="_blank" rel="noreferrer" className="pl">
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pl"
+              aria-label={`Open ${title} GitHub repository`}
+              onClick={stopCardClick}
+            >
               GH
             </a>
           )}
           {live && (
-            <a href={live} target="_blank" rel="noreferrer" className="pl">
+            <a
+              href={live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pl"
+              aria-label={`Open ${title} live demo`}
+              onClick={stopCardClick}
+            >
               ↗
             </a>
           )}

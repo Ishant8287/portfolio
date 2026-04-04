@@ -5,6 +5,8 @@ export default function Contact() {
   const [status, setStatus] = useState("Send Message");
   const [btnBg, setBtnBg] = useState("");
   const [disabled, setDisabled] = useState(false);
+  const contactEmail = "singhishant683@gmail.com";
+  const gmailComposeLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}`;
 
   const handleChange = (e) => {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -51,14 +53,19 @@ export default function Contact() {
               within 24 hours.
             </p>
             <div className="cls">
-              <a href="mailto:ishantsingh8287@gmail.com" className="cl">
+              <a
+                href={gmailComposeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cl"
+              >
                 <div className="cli">📧</div>
-                <span>ishantsingh8287@gmail.com</span>
+                <span>{contactEmail}</span>
               </a>
               <a
                 href="https://github.com/Ishant8287"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="cl"
               >
                 <div className="cli">🐙</div>
@@ -67,7 +74,7 @@ export default function Contact() {
               <a
                 href="https://www.linkedin.com/in/ishant-singh-9b3bb93a7"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="cl"
               >
                 <div className="cli">💼</div>

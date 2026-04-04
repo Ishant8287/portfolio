@@ -5,6 +5,7 @@ export default function Navbar() {
   const { dark, toggle } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const resumeHref = "/resume.pdf";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -41,7 +42,7 @@ export default function Navbar() {
           <button className="btn-th" onClick={toggle} aria-label="Toggle theme">
             {dark ? "🌙" : "☀️"}
           </button>
-          <a href="#" className="btn-re" download>
+          <a href={resumeHref} className="btn-re" download="resume.pdf">
             resume ↓
           </a>
           <button
@@ -66,7 +67,8 @@ export default function Navbar() {
           </a>
         ))}
         <a
-          href="#"
+          href={resumeHref}
+          download="resume.pdf"
           onClick={closeMenu}
           style={{
             marginTop: "auto",
