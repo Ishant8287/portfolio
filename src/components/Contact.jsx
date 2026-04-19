@@ -30,14 +30,16 @@ export default function Contact() {
           </p>
 
           {/* Email CTA */}
-          <a
-            href="https://mail.google.com/mail/?view=cm&to=singhishant683@gmail.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block font-body text-sm font-semibold text-black bg-accent px-10 py-4 tracking-[0.25em] uppercase hover:bg-accent/85 transition-colors mb-16 mx-auto md:mx-0"
-          >
-            singhishant683@gmail.com
-          </a>
+          <div className="flex justify-center md:justify-start mb-16">
+            <a
+              href="https://mail.google.com/mail/?view=cm&to=singhishant683@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-body text-sm font-semibold text-black bg-accent px-10 py-4 tracking-[0.25em] uppercase hover:bg-accent/85 transition-colors"
+            >
+              singhishant683@gmail.com
+            </a>
+          </div>
 
           {/* Links row */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 pt-10 border-t border-white/[0.06]">
