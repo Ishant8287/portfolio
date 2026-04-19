@@ -2,8 +2,8 @@
 
 A modern, backend-focused developer portfolio showcasing scalable full-stack projects, AI integrations, and production-ready systems.
 
-🔗 **Live Demo**: https://portfolio-eight-xi-52.vercel.app  
-📂 **Repository**: https://github.com/Ishant8287/portfolio  
+🔗 **Live Demo**: [Live]https://portfolio-eight-xi-52.vercel.app  
+📂 **Repository**: [Repo]https://github.com/Ishant8287/portfolio  
 
 ---
 
