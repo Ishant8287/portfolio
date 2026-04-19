@@ -1,94 +1,94 @@
+import useInView from '../hooks/useInView'
+
+const stats = [
+  { value: '7+', label: 'Projects Shipped' },
+  { value: '8.5', label: 'CGPA' },
+  { value: '2027', label: 'B.Tech CS' },
+  { value: '<150ms', label: 'API Response (RetailFlow)' },
+]
+
 export default function About() {
+  const [ref, inView] = useInView()
+  const [statsRef, statsVisible] = useInView()
+
   return (
-    <section id="about">
-      <div className="ag">
-        <div>
-          <div className="slbl rev">About</div>
-          <h2 className="stit rev">
-            Building systems
-            <br />
-            <span className="fire">that scale.</span>
+    <section id="about" className="py-24 md:py-32 px-6 md:px-16">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="mb-16">
+          <p className="font-script text-accent text-3xl md:text-4xl mb-1">Who I</p>
+          <h2
+            className="font-display text-white leading-none"
+            style={{ fontSize: 'clamp(60px, 10vw, 130px)' }}
+          >
+            AM
           </h2>
-          <div className="at rev">
-            <p>
-              I'm a <strong>backend-focused developer</strong> who thrives on
-              designing clean, efficient server-side systems. My work centers on
-              building REST APIs, authentication layers, and database
-              architectures that aren't just functional — they're built to last.
-            </p>
-            <p>
-              With deep experience in <strong>Node.js and MongoDB</strong>, I
-              approach every project with an architecture-first mindset. Great
-              backend code is invisible to users but unmistakable to the teams
-              that maintain it.
-            </p>
-            <p>
-              Currently looking for opportunities to contribute to complex
-              backend systems and grow as an engineer.
-            </p>
-          </div>
-          <div className="ah rev">
-            <div className="ahi">REST API design &amp; development</div>
-            <div className="ahi">JWT authentication &amp; RBAC systems</div>
-            <div className="ahi">MongoDB schema design &amp; optimization</div>
-            <div className="ahi">Modular, maintainable architecture</div>
-          </div>
         </div>
 
-        <div className="rev">
-          <div className="ac">
-            <div className="acbar">
-              <div className="dot" style={{ background: "#ef4444" }} />
-              <div
-                className="dot"
-                style={{ background: "var(--accent)", marginLeft: "4px" }}
-              />
-              <div
-                className="dot"
-                style={{ background: "#4ade80", marginLeft: "4px" }}
-              />
-              <span
-                style={{
-                  fontSize: ".63rem",
-                  color: "var(--text3)",
-                  marginLeft: ".48rem",
-                }}
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+          {/* Left — text */}
+          <div
+            ref={ref}
+            className={`fade-up ${inView ? 'visible' : ''}`}
+          >
+            <p className="font-body text-white/60 text-base md:text-lg leading-relaxed mb-6">
+              I'm Ishant Singh — a backend-focused full stack developer pursuing B.Tech in CS at JSS Academy of Technical Education, Noida (2023–2027).
+            </p>
+            <p className="font-body text-white/60 text-base md:text-lg leading-relaxed mb-6">
+              I build production-ready APIs, multi-tenant systems, and AI-integrated applications. My focus is backend depth — clean architecture, optimized queries, and systems that actually scale. I don't just ship features; I care about what happens under the hood.
+            </p>
+            <p className="font-body text-white/60 text-base md:text-lg leading-relaxed mb-10">
+              Currently looking for backend/full stack internships where I can contribute real work — not just fix typos and run tests.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://mail.google.com/mail/?view=cm&to=singhishant683@gmail.com"
+target="_blank"
+rel="noreferrer"
+                className="font-body text-xs text-black bg-accent px-7 py-3 tracking-[0.2em] uppercase font-semibold hover:bg-accent/80 transition-colors"
               >
-                ishant.config.js
-              </span>
+                Get In Touch
+              </a>
+              <a
+                href="https://github.com/Ishant8287"
+                target="_blank"
+                rel="noreferrer"
+                className="font-body text-xs text-white border border-white/15 px-7 py-3 tracking-[0.2em] uppercase hover:border-accent hover:text-accent transition-colors duration-300"
+              >
+                GitHub
+              </a>
             </div>
-            <span className="cc">// backend engineer config</span>
-            <br />
-            <span className="ck">const</span> engineer = {"{"}
-            <br />
-            &nbsp;&nbsp;name: <span className="cs">"Ishant Singh"</span>,<br />
-            &nbsp;&nbsp;role: <span className="cs">"Backend Engineer"</span>,
-            <br />
-            &nbsp;&nbsp;stack: [<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;<span className="cs">"Node.js"</span>,{" "}
-            <span className="cs">"Express.js"</span>,<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;<span className="cs">"MongoDB"</span>,{" "}
-            <span className="cs">"React"</span>
-            <br />
-            &nbsp;&nbsp;],
-            <br />
-            &nbsp;&nbsp;passions: [<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <span className="cs">"Clean Architecture"</span>,<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;<span className="cs">"API Design"</span>,
-            <span className="cs">"Security"</span>
-            <br />
-            &nbsp;&nbsp;],
-            <br />
-            &nbsp;&nbsp;available: <span className="cn">true</span>,<br />
-            &nbsp;&nbsp;coffee: <span className="cf">Infinity</span>
-            <br />
-            {"}"};<br />
-            <br />
-            <span className="ck">export default</span> engineer;
           </div>
+
+          {/* Right — stats */}
+          <div
+            ref={statsRef}
+            className={`grid grid-cols-2 gap-px bg-white/[0.06] border border-white/[0.06] fade-up ${statsVisible ? 'visible' : ''}`}
+          >
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className="bg-dark p-8 group hover:bg-white/[0.03] transition-colors duration-300"
+              >
+                <p
+                  className="font-display text-accent leading-none mb-2 group-hover:scale-105 transition-transform duration-300 origin-left"
+                  style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}
+                >
+                  {stat.value}
+                </p>
+                <p className="font-body text-white/30 text-xs tracking-widest uppercase">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
-  );
+  )
 }

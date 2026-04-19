@@ -1,88 +1,87 @@
-import { useState, useEffect } from "react";
-import useTheme from "./hooks/useTheme";
+import { useState, useEffect } from 'react'
+
+const links = ['Home', 'Skills', 'Projects', 'About', 'Contact']
 
 export default function Navbar() {
-  const { dark, toggle } = useTheme();
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const resumeHref = "/resume.pdf";
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const closeMenu = () => setMobileOpen(false);
-
-  const navLinks = [
-    { href: "#about", label: "about" },
-    { href: "#skills", label: "skills" },
-    { href: "#projects", label: "projects" },
-    { href: "#philosophy", label: "philosophy" },
-    { href: "#cs2", label: "contact" },
-  ];
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <>
-      <nav id="nav" className={scrolled ? "sc" : ""}>
-        <a href="#" className="nl">
-          IS<em>.</em>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-dark/90 backdrop-blur-md border-b border-white/5' : ''
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-16 py-5 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#home" className="font-display text-2xl text-white tracking-widest hover:text-accent transition-colors">
+          IS<span className="text-accent"></span>
         </a>
 
-        <div className="nls">
-          {navLinks.map(({ href, label }) => (
-            <a key={label} href={href}>
-              {label}
+        {/* Desktop Links */}
+        <ul className="hidden md:flex items-center gap-10">
+          {links.map((link) => (
+            <li key={link}>
+              <a
+                href={`#${link.toLowerCase()}`}
+                className="font-body text-sm text-white/50 tracking-widest uppercase hover:text-accent transition-colors duration-300"
+              >
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <a
+          href="https://mail.google.com/mail/?view=cm&to=singhishant683@gmail.com"
+target="_blank"
+rel="noreferrer"
+          className="hidden md:block font-body text-sm text-black bg-accent px-5 py-2 tracking-widest uppercase font-semibold hover:bg-accent/80 transition-colors"
+        >
+          Hire Me
+        </a>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden flex flex-col gap-1.5 p-2"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span className={`block w-6 h-px bg-white transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-6 h-px bg-white transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-6 h-px bg-white transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-dark/95 backdrop-blur-md border-t border-white/5 px-6 py-6 flex flex-col gap-6">
+          {links.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="font-body text-sm text-white/60 tracking-widest uppercase hover:text-accent transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link}
             </a>
           ))}
-        </div>
-
-        <div className="na">
-          <button className="btn-th" onClick={toggle} aria-label="Toggle theme">
-            {dark ? "🌙" : "☀️"}
-          </button>
-          <a href={resumeHref} className="btn-re" download="resume.pdf">
-            resume ↓
-          </a>
-          <button
-            className="nmb"
-            style={{ display: "none" }}
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
+          <a
+            href="https://mail.google.com/mail/?view=cm&to=singhishant683@gmail.com"
+target="_blank"
+rel="noreferrer"
+            className="font-body text-sm text-black bg-accent px-5 py-2 tracking-widest uppercase font-semibold text-center"
           >
-            ☰
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile overlay */}
-      <div id="mno" className={mobileOpen ? "open" : ""} onClick={closeMenu} />
-
-      {/* Mobile nav drawer */}
-      <div id="mn" className={mobileOpen ? "open" : ""}>
-        {navLinks.map(({ href, label }) => (
-          <a key={label} href={href} className="ml" onClick={closeMenu}>
-            {label}
+            Hire Me
           </a>
-        ))}
-        <a
-          href={resumeHref}
-          download="resume.pdf"
-          onClick={closeMenu}
-          style={{
-            marginTop: "auto",
-            border: "1px solid var(--accent)",
-            borderRadius: "6px",
-            padding: ".62rem 1rem",
-            textAlign: "center",
-            color: "var(--accent)",
-            letterSpacing: ".06em",
-          }}
-        >
-          resume ↓
-        </a>
-      </div>
-    </>
-  );
+        </div>
+      )}
+    </nav>
+  )
 }

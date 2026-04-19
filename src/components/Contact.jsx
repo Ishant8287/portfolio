@@ -1,132 +1,77 @@
-import { useState } from "react";
+import useInView from '../hooks/useInView'
 
 export default function Contact() {
-  const [fields, setFields] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("Send Message");
-  const [btnBg, setBtnBg] = useState("");
-  const [disabled, setDisabled] = useState(false);
-  const contactEmail = "singhishant683@gmail.com";
-  const gmailComposeLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}`;
-
-  const handleChange = (e) => {
-    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSend = () => {
-    if (!fields.name || !fields.email || !fields.message) {
-      setBtnBg("var(--red)");
-      setStatus("Fill all fields");
-      setTimeout(() => {
-        setBtnBg("");
-        setStatus("Send Message");
-      }, 2000);
-      return;
-    }
-    setStatus("Sending...");
-    setDisabled(true);
-    setTimeout(() => {
-      setStatus("Sent! ✓");
-      setBtnBg("var(--green)");
-      setFields({ name: "", email: "", message: "" });
-      setTimeout(() => {
-        setStatus("Send Message");
-        setBtnBg("");
-        setDisabled(false);
-      }, 3000);
-    }, 1100);
-  };
+  const [ref, inView] = useInView()
 
   return (
-    <div id="cs2">
-      <div className="ci">
-        <div className="slbl rev">Contact</div>
-        <h2 className="stit rev">
-          Let's <span className="fire">Connect</span>
-        </h2>
-        <div className="cg">
-          {/* Left info */}
-          <div className="cin rev">
-            <h3>Open to opportunities</h3>
-            <p>
-              Whether you have a backend role, a freelance project, or just want
-              to talk systems architecture — my inbox is always open. I reply
-              within 24 hours.
-            </p>
-            <div className="cls">
-              <a
-                href={gmailComposeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cl"
-              >
-                <div className="cli">📧</div>
-                <span>{contactEmail}</span>
-              </a>
-              <a
-                href="https://github.com/Ishant8287"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cl"
-              >
-                <div className="cli">🐙</div>
-                github.com/Ishant8287
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ishant-singh-9b3bb93a7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cl"
-              >
-                <div className="cli">💼</div>
-                linkedin.com/in/ishant-singh
-              </a>
-            </div>
+    <section id="contact" className="py-24 md:py-36 px-6 md:px-16 border-t border-white/[0.06]">
+      <div className="max-w-7xl mx-auto">
+        <div
+          ref={ref}
+          className={`fade-up ${inView ? 'visible' : ''}`}
+        >
+          {/* Header */}
+          <p className="font-script text-accent text-3xl md:text-4xl mb-1">Let's</p>
+          <h2
+            className="font-display text-white leading-none mb-12"
+            style={{ fontSize: 'clamp(60px, 11vw, 150px)' }}
+          >
+            WORK
+            <br />
+            TOGETHER
+          </h2>
+
+          {/* Description */}
+          <p className="font-body text-white/40 text-base md:text-lg max-w-xl mb-12 leading-relaxed">
+            Looking for a backend-focused full stack intern? I'm actively applying for internships before July 2026. Let's talk.
+          </p>
+
+          {/* Email CTA */}
+          <a
+            href="https://mail.google.com/mail/?view=cm&to=singhishant683@gmail.com"
+target="_blank"
+rel="noreferrer"
+            className="inline-block font-body text-sm font-semibold text-black bg-accent px-10 py-4 tracking-[0.25em] uppercase hover:bg-accent/85 transition-colors mb-16"
+          >
+            singhishant683@gmail.com
+          </a>
+
+          {/* Links row */}
+          <div className="flex flex-wrap items-center gap-8 pt-10 border-t border-white/[0.06]">
+            <a
+              href="https://github.com/Ishant8287"
+              target="_blank"
+              rel="noreferrer"
+              className="font-body text-xs text-white/30 tracking-[0.3em] uppercase hover:text-accent transition-colors"
+            >
+              GitHub
+            </a>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <a
+              href="https://linkedin.com/in/ishant-singh-cse"
+              target="_blank"
+              rel="noreferrer"
+              className="font-body text-xs text-white/30 tracking-[0.3em] uppercase hover:text-accent transition-colors"
+            >
+              LinkedIn
+            </a>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <a
+              href="https://github.com/Ishant8287"
+              target="_blank"
+              rel="noreferrer"
+              className="font-body text-xs text-white/30 tracking-[0.3em] uppercase hover:text-accent transition-colors"
+            >
+              Portfolio Source
+            </a>
           </div>
 
-          {/* Right form */}
-          <div className="cf2 rev">
-            <div className="ff">
-              <label>Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your name"
-                value={fields.name}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="ff">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="your@email.com"
-                value={fields.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="ff">
-              <label>Message</label>
-              <textarea
-                name="message"
-                rows={4}
-                placeholder="Tell me about the opportunity..."
-                value={fields.message}
-                onChange={handleChange}
-              />
-            </div>
-            <button
-              className="bts"
-              onClick={handleSend}
-              disabled={disabled}
-              style={{ background: btnBg || undefined }}
-            >
-              <span>{status}</span>
-              <span>→</span>
-            </button>
-          </div>
+          {/* Footer note */}
+          <p className="font-body text-white/15 text-xs tracking-widest mt-10">
+            © 2026 ISHANT SINGH — BUILT WITH REACT + VITE + TAILWIND
+          </p>
         </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
