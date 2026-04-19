@@ -63,7 +63,7 @@ export default function Hero() {
         </div>
 
         {/* SINGH + braces */}
-        <div className="flex items-end gap-4 md:gap-8 mt-2">
+        <div className="flex items-center gap-2 md:gap-8 mt-2 flex-wrap">
           <h1
             className="font-display leading-none text-white select-none"
             style={{
@@ -75,7 +75,7 @@ export default function Hero() {
           </h1>
           <span
             className="font-display text-accent leading-none mb-2 md:mb-4 select-none"
-            style={{ fontSize: "clamp(40px, 7vw, 100px)" }}
+            style={{ fontSize: "clamp(28px, 6vw, 80px)" }}
           >
             {"{ "}
             <span
