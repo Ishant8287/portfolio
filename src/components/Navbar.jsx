@@ -24,7 +24,8 @@ export default function Navbar() {
           href="#home"
           className="font-display text-2xl text-white tracking-widest hover:text-accent transition-colors"
         >
-          IS<span className="text-accent"></span>
+          <span className="font-display text-accent">{`{ Ishant }`}</span>
+          <span className="text-accent"></span>
         </a>
 
         {/* Desktop Links */}
