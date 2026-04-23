@@ -9,7 +9,7 @@ A modern, backend-focused developer portfolio showcasing scalable full-stack pro
 
 ## 📌 Overview
 
-This portfolio is designed to present my work as a **backend-focused full stack developer**.  
+This portfolio is designed to present my work as a **backend-focused full stack developer**..  
 It highlights real-world projects, system-level thinking, and clean UI with smooth interactions.
 
 ---
